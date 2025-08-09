@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Feedback – MediCompare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon_v3.ico' %}">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --bg-color: #f5f7fa;
+            --text-color: #333;
+            --card-bg: white;
+            --header-bg: #2c3e50;
+            --input-bg: white;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: var(--box-shadow);
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            flex: 1;
+        }
+
+        /* Default h1 for desktop */
+        h1.desktop {
+            display: block;
+        }
+
+        /* h1 for mobile */
+        h1.mobile {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            h1.desktop {
+                display: none;
+            }
+
+            h1.mobile {
+                display: block;
+            }
+        }
+
+        .theme-toggle {
+            position: absolute;
+            right: 2.5rem;
+            top: 30%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        @media (max-width: 600px) {
+            .theme-toggle {
+                right: 1rem;
+                top: 0.4rem;
+                transform: none;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-color);
+        }
+
+        .home-button {
+            background: none;
+            color: white;
+            border: none;
+            padding: 0;
+            font-size: 1.5rem;
+            font-weight: 560;
+            cursor: pointer;
+            position: absolute;
+            top: 14%;
+            left: 2.8rem;
+            z-index: 1001;
+            transition: color 0.3s ease;
+        }
+
+        @media (max-width: 600px) {
+            .home-button {
+                left: 1rem;
+                top: 0.2rem;
+                transform: none;
+                font-size: 1.2rem !important;
+            }
+        }
+
+        .home-button:hover {
+            color: var(--accent-color);
+            /* red tone */
+        }
+
+        form {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background-color: var(--input-bg);
+            transition: var(--transition);
+            color: var(--input-text-color);
+        }
+
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 5px rgba(231, 76, 60, 0.3);
+            color: var(--input-text-color);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+            color: var(--input-text-color);
+        }
+
+        [data-theme="dark"] {
+            --input-text-color: #fff;
+        }
+
+        [data-theme="light"] {
+            --input-text-color: #000;
+        }
+
+        button[type="submit"] {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: auto;
+        }
+
+        button[type="submit"]:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #4a89dc;
+            --secondary-color: #3b7dd8;
+            --accent-color: #e74c3c;
+            --light-color: #2c3e50;
+            --dark-color: #ecf0f1;
+            --bg-color: #121a24;
+            --card-bg: #1e2a3a;
+            --text-color: #e0e6ed;
+            --border-color: #2d3e50;
+            --header-bg: #0d1520;
+            --input-bg: #1a2634;
+        }
+
+        [data-theme="dark"] header {
+            background-color: var(--header-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        [data-theme="dark"] form {
+            border: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            form {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .toggle-text {
+                display: none;
+            }
+
+            .theme-toggle {
+                width: 2.5rem;
+                justify-content: center;
+            }
+
+            .home-button {
+                padding: 0.4rem 0.8rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <button onclick="window.location.href='/'" class="home-button">
+                <span class="home">Mc</span>
+            </button>
+
+            <h1 class="desktop">Send Us Your Suggestions</h1>
+            <h1 class="mobile">Send Us Your <br> Feedback</h1>
+            <button class="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-sun"></i>
+                <span class="toggle-text">Light Mode</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <form action="https://formspree.io/f/mjkrorjy" method="POST">
+            <input type="hidden" name="_next" value="{% url 'thanks' %}">
+            <input type="hidden" name="_subject" value="New Suggestion from MediCompare users">
+
+            <label for="email">Your email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Your suggestion:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send Feedback</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>© 2025 MediCompare. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const themeToggle = document.querySelector('.theme-toggle');
+        const toggleText = themeToggle.querySelector('.toggle-text');
+        const toggleIcon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                toggleText.textContent = 'Dark Mode';
+                toggleIcon.classList.remove('fa-sun');
+                toggleIcon.classList.add('fa-moon');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                toggleText.textContent = 'Light Mode';
+                toggleIcon.classList.remove('fa-moon');
+                toggleIcon.classList.add('fa-sun');
+            }
+        });
+    </script>
+</body>
+
+</html>

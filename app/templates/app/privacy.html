@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon_v3.ico' %}">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --bg-color: #f5f7fa;
+            --text-color: #333;
+            --card-bg: white;
+            --header-bg: #2c3e50;
+            --input-bg: white;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--box-shadow);
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+            flex: 1;
+        }
+
+        h1.desktop {
+            display: block;
+        }
+
+        h1.mobile {
+            display: none;
+        }
+
+        .subtitle {
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            color: var(--light-color);
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            right: -11rem;
+            top: 6%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 0.9rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-color);
+        }
+
+        .home-button {
+            background: none;
+            color: white;
+            border: none;
+            padding: 0;
+            font-size: 1.5rem;
+            font-weight: 560;
+            cursor: pointer;
+            position: absolute;
+            top: -3%;
+            left: -12rem;
+            z-index: 1001;
+            transition: color 0.3s ease;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card p {
+            margin-bottom: 1rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+
+        .card a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            color: #777;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            margin-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #4a89dc;
+            --secondary-color: #3b7dd8;
+            --accent-color: #e74c3c;
+            --light-color: #2c3e50;
+            --dark-color: #ecf0f1;
+            --bg-color: #121a24;
+            --card-bg: #1e2a3a;
+            --text-color: #e0e6ed;
+            --border-color: #2d3e50;
+            --header-bg: #0d1520;
+            --input-bg: #1a2634;
+        }
+
+        [data-theme="dark"] header {
+            background-color: var(--header-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        [data-theme="dark"] .card {
+            border: 1px solid var(--border-color);
+        }
+
+        [data-theme="dark"] .subtitle {
+            color: #a0d2ff;
+            opacity: 0.95;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            font-weight: 350;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: clamp(1.5rem, 4.5vw, 1.8rem);
+                margin-top: 2rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1.desktop {
+                display: none;
+            }
+
+            h1.mobile {
+                display: block;
+            }
+
+            .home-button {
+                left: 1rem;
+                top: 0.2rem;
+                transform: none;
+                font-size: 1.2rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .toggle-text {
+                display: none;
+            }
+
+            .theme-toggle {
+                width: 2rem;
+                padding: 0.3rem;
+                justify-content: center;
+                right: 1rem;
+            }
+
+            .home-button {
+                padding: 0.3rem 0.6rem;
+                font-size: clamp(0.9rem, 2.5vw, 1rem);
+                left: 1rem;
+                top: -10%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <button class="home-button" onclick="window.location.href='/'">Mc</button>
+                <div>
+                    <h1 class="desktop">Privacy Policy</h1>
+                    <h1 class="mobile">Privacy Policy</h1>
+                    <p class="subtitle">Just Like Your Health, Your Privacy Matters</p>
+                </div>
+                <button id="themeToggle" class="theme-toggle"></button>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="card">
+            <p>This website uses Google AdSense to show ads. AdSense may use cookies to personalize content and measure
+                traffic.</p>
+            <p>These cookies may collect data like your IP address, browser type, and device info. It’s handled by
+                Google, not us.</p>
+            <p>You can learn how Google uses this data at <a href="https://policies.google.com/technologies/ads"
+                    target="_blank">Google's Ad Policies</a>.</p>
+            <p>By using this site, you agree to the use of cookies for analytics and advertising.</p>
+        </div>
+    </div>
+    <footer>
+        <p>© 2025 MediCompare. All rights reserved.</p>
+    </footer>
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function initTheme() {
+            const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            themeToggle.innerHTML = currentTheme === 'dark'
+                ? '<i class="fas fa-sun"></i> <span class="toggle-text">Light Mode</span>'
+                : '<i class="fas fa-moon"></i> <span class="toggle-text">Dark Mode</span>';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.innerHTML = newTheme === 'dark'
+                ? '<i class="fas fa-sun"></i> <span class="toggle-text">Light Mode</span>'
+                : '<i class="fas fa-moon"></i> <span class="toggle-text">Dark Mode</span>';
+        });
+
+        initTheme();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - MediCompare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8576247474633181"
+        crossorigin="anonymous"></script>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon_v3.ico' %}">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --bg-color: #f5f7fa;
+            --text-color: #333;
+            --card-bg: white;
+            --header-bg: #2c3e50;
+            --input-bg: white;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--box-shadow);
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 0.5rem;
+            flex: 1;
+        }
+
+        .subtitle {
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            color: var(--light-color);
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            right: 2.5rem;
+            top: 30%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 0.9rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-color);
+        }
+
+        .home-button {
+            background: none;
+            color: white;
+            border: none;
+            padding: 0;
+            font-size: 1.5rem;
+            font-weight: 560;
+            cursor: pointer;
+            position: absolute;
+            top: 20%;
+            left: 2.7rem;
+            z-index: 1001;
+            transition: color 0.3s ease;
+        }
+
+        @media (max-width: 600px) {
+            .home-button {
+                left: 1rem;
+                top: 0.2rem;
+                transform: none;
+                font-size: 1.2rem !important;
+            }
+        }
+
+        .home-button:hover {
+            color: var(--accent-color);
+            /* red tone */
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 1.2rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+
+        .welcome-message {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-message h2 {
+            font-size: clamp(1.4rem, 4.5vw, 1.8rem);
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .welcome-message p {
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            line-height: 1.7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            color: #777;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            margin-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #4a89dc;
+            --secondary-color: #3b7dd8;
+            --accent-color: #e74c3c;
+            --light-color: #2c3e50;
+            --dark-color: #ecf0f1;
+            --bg-color: #121a24;
+            --card-bg: #1e2a3a;
+            --text-color: #e0e6ed;
+            --border-color: #2d3e50;
+            --header-bg: #0d1520;
+            --input-bg: #1a2634;
+        }
+
+        [data-theme="dark"] header {
+            background-color: var(--header-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        [data-theme="dark"] .card {
+            border: 1px solid var(--border-color);
+        }
+
+        [data-theme="dark"] .subtitle {
+            color: #a0d2ff;
+            opacity: 0.95;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            font-weight: 350;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: clamp(1.5rem, 4.5vw, 1.8rem);
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            .welcome-message h2 {
+                font-size: clamp(1.2rem, 4vw, 1.6rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .toggle-text {
+                display: none;
+            }
+
+            .theme-toggle {
+                width: 2rem;
+                padding: 0.3rem;
+                justify-content: center;
+                right: 1rem;
+            }
+
+            .home-button {
+                padding: 0.3rem 0.6rem;
+                font-size: clamp(0.9rem, 2.5vw, 1rem);
+                left: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+    <!-- <button class="hamburger-btn" id="hamburgerBtn">
+    <i class="fas fa-bars"></i>
+    <i class="fas fa-times"></i>
+  </button> -->
+    <header>
+        <div class="header-content">
+            <div>
+                <h1>MediCompare</h1>
+                <p class="subtitle">Compare. Cure. Trust.</p>
+            </div>
+            <div class="nav-links">
+                <button class="theme-toggle" id="themeToggle">
+                    <span class="toggle-text">Light Mode</span>
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <button onclick="window.location.href='/'" class="home-button">
+                    <span class="home">Mc</span>
+                </button>
+
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="welcome-message">
+            <h2>Empowering Homeopaths with Speed and Clarity</h2>
+            <p>
+                This platform is designed to assist homeopathic students and practitioners in understanding, comparing,
+                and referencing remedies from various Materia Medica texts with ease and speed.
+            </p>
+        </section>
+
+        <section class="card">
+            <h3>What is Materia Medica?</h3>
+            <ul>
+                <li>Materia Medica is the foundational collection of homeopathic medicines.</li>
+                <li>Numerous versions exist, authored by renowned figures like Boericke and Allen.</li>
+                <li>Each book contains over 1000 remedies, with every remedy listing 100+ symptoms.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h3>Challenges Faced by Students and Practitioners:</h3>
+            <ul>
+                <li>Memorizing every symptom for every remedy is nearly impossible.</li>
+                <li>Many remedies can address the same symptom (e.g., over 30 remedies for fever).</li>
+                <li>During clinical practice or vivas, selecting the most suitable remedy requires comparing multiple
+                    options.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h3>How MediCompare Helps</h3>
+            <ul>
+                <li>Enables quick comparison of selected remedies based on symptoms.</li>
+                <li>Saves time for physicians during case analysis — no need to flip through thick books.</li>
+                <li>Provides a side-by-side comparison to help identify the most suitable remedy.</li>
+                <li>Assists students in understanding key differentiating points between remedies.</li>
+                <li>Offers a centralized database of remedies — making it unnecessary to carry multiple books.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h3>Who will MediCompare help ?</h3>
+            <ul>
+                <li>Homeopathic students preparing for exams and vivas.</li>
+                <li>Recent graduates starting their clinical journey.</li>
+                <li>Experienced physicians seeking quick references to refine prescriptions.</li>
+                <li><strong>Researchers</strong> can use it to spot patterns across Materia Medica.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 MediCompare | All Rights Reserved </p>
+        <p> Developed by</p>
+        <p>Abhay S, B.Tech CSE</p>
+        <p>Aparna Stuti, BHMS</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeToggle = document.getElementById('themeToggle');
+            const toggleText = document.querySelector('.toggle-text');
+            const body = document.body;
+
+            body.setAttribute('data-theme', 'dark');
+            toggleText.textContent = 'Light Mode';
+
+            themeToggle.addEventListener('click', function () {
+                if (body.getAttribute('data-theme') === 'dark') {
+                    body.removeAttribute('data-theme');
+                    toggleText.textContent = 'Dark Mode';
+                } else {
+                    body.setAttribute('data-theme', 'dark');
+                    toggleText.textContent = 'Light Mode';
+                }
+            });
+
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+
+            hamburgerBtn.addEventListener('click', function () {
+                sidebar.classList.toggle('open');
+                overlay.classList.toggle('open');
+                hamburgerBtn.classList.toggle('active');
+            });
+
+            function closeSidebar() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('open');
+                hamburgerBtn.classList.remove('active');
+            }
+
+            overlay.addEventListener('click', closeSidebar);
+            document.querySelectorAll('.sidebar-link').forEach(link => {
+                if (!link.hasAttribute('target')) {
+                    link.addEventListener('click', closeSidebar);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
