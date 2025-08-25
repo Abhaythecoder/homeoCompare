@@ -6,15 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Compare homeopathic drugs by symptoms using Materia Medica sources.">
     <meta name="keywords"
-        content="medicompare,homeopathy compare, homeo compare, homeopathy, compare remedies, materia medica, boericke, allen">
+        content="HomeoCompare,homeopathy compare, homeo compare, homeopathy, compare remedies, materia medica, boericke, allen">
     <meta name="robots" content="index, follow">
-    <meta name="description" content="Find and compare homeopathic remedies based on symptoms with MediCompare.">
+    <meta name="description" content="Find and compare homeopathic remedies based on symptoms with HomeoCompare.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8576247474633181"
         crossorigin="anonymous"></script>
     {% load static %}
     <link rel="icon" type="image/x-icon" href="{% static 'favicon_v3.ico' %}">
 
+    <script>
+        (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "2Y3GWvOFW-d-ysXVvcJyI"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
+    </script>
 
     <style>
         :root {
@@ -658,10 +661,10 @@
                     <span>Privacy</span>
                 </a>
 
-                <a href="https://buymeachai.ankushminda.com/abhayShyam" target="_blank" class="sidebar-link"
+                <a href="https://ascendiakapi.pythonanywhere.com/abhay" target="_blank" class="sidebar-link"
                     id="coffeeLink">
                     <i class="fas fa-coffee"></i>
-                    <span>Buy Me a Chai</span>
+                    <span>Support me on Kapay</span>
                 </a>
 
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=abhay31204@gmail.com&subject=MediCompare&body=Write%20your%20mail%20here"
